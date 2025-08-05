@@ -1,14 +1,12 @@
 import json
 
-students_data = {
-    "S1001": {"name": "Ashwini", "batch": "2024", "attendance": {"total_days": 200, "present_days": 185},
-              "terms": {"Term 1": {"Math": 100, "Physics": 92, "English": 81},
-                        "Term 2": {"Math": 91, "Physics": 94, "English": 89}}},
-    "S1002": {"name": "Rekha", "batch": "2024", "attendance": {"total_days": 200, "present_days": 167},
-              "terms": {"Term 1": {"Math": 88, "Physics": 92, "English": 67},
-                        "Term 2": {"Math": 91, "Physics": 84, "English": 69}}}
-}
- 
+def import_data_from_json(filename):
+    global students_data
+    with open(filename, "r") as file:
+        students_data = json.load(file)
+    print(f"Data imported from {filename}")
+import_data_from_json("students.json")
+
 def updated_subject_mark(data, student_id, term_name, subject_name, new_mark):
     if student_id in data:
         student = data[student_id]
@@ -126,43 +124,11 @@ def rank_topper_by_batch(batch):
             topper_marks = total_marks
     print(f"Topper is {topper_name} id {topper_id} with total {topper_marks}")
 
-def generate_student_report(student_id):
-    student = students_data[student_id]
-    if not student:
-        print(f"no student found with ID {student_id}")
-        return
-    print(f"Student report for {student['name']} (ID: {student_id}, Batch: {student['batch']})\n")
-    attendance_percent = 0
-    attendance = student["attendance"]
-    total = attendance["total_days"]
-    present = attendance["present_days"]
-    attendance_percent = (present / total) * 100
-    print(f"Attendance percentage for {student['name']} is {attendance_percent}%")
-   
-    total_marks = 0
-    sub_count  = 0
-    for term_name, subjects in student["terms"].items():
-        print(f"Term: {term_name}")
-        for subject, marks in subjects.items():
-            print(f"{subject}: {marks}")
-            total_marks += marks
-            sub_count += 1
-        print()
-    average = total_marks / sub_count if sub_count else 0
-    print(f"Total marks: {total_marks}")
-    print(f"Average marks: {round(average, 2)}")
-generate_student_report("S1001")
-
 def export_data_to_json(filename):
     with open(filename, "w") as file:
         json.dump(students_data, file, indent=4)
     print(f"Data exported to {filename}")
 
-def import_data_from_json(filename):
-    global students_data
-    with open(filename, "r") as file:
-        students_data = json.load(file)
-    print(f"Data imported from {filename}")
 generate_student_report("S1001")
 topper_by_term("Term 2")
 
