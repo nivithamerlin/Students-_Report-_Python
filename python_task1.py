@@ -101,7 +101,7 @@ def rank_topper_by_batch(batch):
             topper_name = student["name"]
             topper_marks = total_marks
     print(f"Topper is {topper_name} id {topper_id} with total {topper_marks}")
-rank_topper_by_batch(2024)
+rank_topper_by_batch("2024")
 def generate_student_report(student_id):
     student = students_data[student_id]
     if not student:
