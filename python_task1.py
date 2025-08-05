@@ -3,11 +3,11 @@ import pprint
 
 students_data = {
     "S1001": {"name": "Ashwini", "batch": "2024", "attendance": {"total_days": 200, "present_days": 185},
-              "terms": {"Term 1": {"Math": 88, "Physics": 92, "English": 81},
+              "terms": {"Term 1": {"Math": 100, "Physics": 92, "English": 81},
                         "Term 2": {"Math": 91, "Physics": 94, "English": 89}}},
-    "S1002": {"name": "Rekha", "batch": "2024", "attendance": {"total_days": 200, "present_days": 185},
-              "terms": {"Term 1": {"Math": 88, "Physics": 92, "English": 81},
-                        "Term 2": {"Math": 91, "Physics": 94, "English": 89}}}
+    "S1002": {"name": "Rekha", "batch": "2024", "attendance": {"total_days": 200, "present_days": 167},
+              "terms": {"Term 1": {"Math": 88, "Physics": 92, "English": 67},
+                        "Term 2": {"Math": 91, "Physics": 84, "English": 69}}}
 }
  
 def updated_subject_mark(data, student_id, term_name, subject_name, new_mark):
