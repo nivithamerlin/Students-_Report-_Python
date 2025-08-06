@@ -38,5 +38,26 @@
                 "English": 69
             }
         }
+    },
+    "S1003": {
+        "name": "'Sreesha",
+        "batch": "2025",
+        "attendance": {
+            "total_days": 0,
+            "present_days": 0
+        },
+        "terms": {
+            "Term 1": {
+                "Math": 99,
+                "English": 98,
+                "Physics": 76
+            },
+            "Term 2": {
+                "Science": 90,
+                "English": 94,
+                "Math": 74,
+                "Physics": 99
+            }
+        }
     }
 }
