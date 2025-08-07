@@ -34,7 +34,7 @@
             },
             "Term 2": {
                 "Math": 91,
-                "Physics": 84,
+                "Physics": 32,
                 "English": 69
             }
         }
@@ -53,7 +53,6 @@
                 "Physics": 76
             },
             "Term 2": {
-                "Science": 90,
                 "English": 94,
                 "Math": 74,
                 "Physics": 99

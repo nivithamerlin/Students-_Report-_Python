@@ -198,7 +198,33 @@ def rank_topper_by_batch(batch):
 def export_data_to_json(filename):
     with open(filename, "w") as file:
         json.dump(students_data, file, indent=4)
+def delete_subject_mark(student_id, term_name, subject_name):
+    if student_id not in students_data:
+        print(f"Student ID {student_id} not found.")
+        return
+    if term_name not in students_data[student_id]["terms"]:
+        print(f"Term '{term_name}' not found for student {student_id}.")
+        return
+    if subject_name not in students_data[student_id]["terms"][term_name]:
+        print(f"Subject '{subject_name}' not found in {term_name}.")
+        return
     
+    del students_data[student_id]["terms"][term_name][subject_name]
+    print(f"Deleted subject '{subject_name}' from {term_name} for student {student_id}.")
+
+def students_progress_report():
+    for student_id, student_info in students_data.items():
+        name = student_info["name"]
+        term = student_info["terms"]
+        for term_name, subjects in term.items():
+            status = "Pass"
+            for subject, mark in subjects.items():
+                if mark < 40:
+                    status = "Fail"
+                    break
+            print(f"{student_id} - {name} in {term_name} : {status}")
+
+   
 
 if __name__ == "__main__":
     filename = "students.json"
@@ -207,6 +233,9 @@ if __name__ == "__main__":
         export_data_to_json(filename)
     else:
         import_data_from_json(filename)
+
+    
+    students_progress_report()
     
     generate_student_report("S1003")
     
